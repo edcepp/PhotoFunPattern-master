@@ -13,22 +13,30 @@ import android.graphics.Color;
 
 public class BrightnessFilter extends PhotoFilter {
 
-    private final int ADJUSTMENT = 100;
+    private int myDeltaBrightness = 0;
 
     /*
     * tranformPixel This method overrides the transformPixel in the parent
-    * class. It adds 100 to each RGB color component. The maxium value of each
+    * class. It adds a delta to each RGB color component. The maxium value of each
     * component is limited to 255
     *
     * @param inPixel is a 32 bit pixel that contains RGB color values
     * @return a new Pixel in which each of the RGB components has been increased
     */
     public int transformPixel(int inPixel) {
-        int red = constrain(Color.red(inPixel) + ADJUSTMENT);
-        int green = constrain(Color.green(inPixel) + ADJUSTMENT);
-        int blue = constrain(Color.blue(inPixel) + ADJUSTMENT);
-        int outPixel = Color.argb(Color.alpha(inPixel), red, green, blue);
-        return outPixel;
+        int red = constrain(Color.red(inPixel) + myDeltaBrightness);
+        int green = constrain(Color.green(inPixel) + myDeltaBrightness);
+        int blue = constrain(Color.blue(inPixel) + myDeltaBrightness);
+        return Color.argb(Color.alpha(inPixel), red, green, blue);
+    }
+
+    /*
+    * setDelta This method sets the change in brightness delta.
+    *
+    *  @param delta is the brightness change
+    */
+    public void setDelta (int delta) {
+        myDeltaBrightness = delta;
     }
 
 }

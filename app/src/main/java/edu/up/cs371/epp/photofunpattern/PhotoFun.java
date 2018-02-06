@@ -71,6 +71,7 @@ public class PhotoFun extends AppCompatActivity {
             implements View.OnClickListener {
         public void onClick(View button) {
             BrightnessFilter filter = new BrightnessFilter();
+            filter.setDelta(50);
             myNewImageView.setImageBitmap(filter.apply(myOriginalBmp));
         }
     }
