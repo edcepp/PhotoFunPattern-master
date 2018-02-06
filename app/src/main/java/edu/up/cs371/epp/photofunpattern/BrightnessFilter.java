@@ -13,7 +13,7 @@ import android.graphics.Color;
 
 public class BrightnessFilter extends PhotoFilter {
 
-    private final int ADJUSTMENT = 100;
+    private final int ADJUSTMENT = 40;
 
     /*
     * tranformPixel This method overrides the transformPixel in the parent
@@ -24,9 +24,9 @@ public class BrightnessFilter extends PhotoFilter {
     * @return a new Pixel in which each of the RGB components has been increased
     */
     public int transformPixel(int inPixel) {
-        int red = constrain(Color.red(inPixel) + ADJUSTMENT);
-        int green = constrain(Color.green(inPixel) + ADJUSTMENT);
-        int blue = constrain(Color.blue(inPixel) + ADJUSTMENT);
+        int red   = constrain(Color.red(inPixel) + ADJUSTMENT);
+        int green = Color.green(inPixel);
+        int blue  = Color.blue(inPixel);
         int outPixel = Color.argb(Color.alpha(inPixel), red, green, blue);
         return outPixel;
     }
